@@ -1,0 +1,15 @@
+
+name_font = fonts/FZY3JW.TTF
+word_font = fonts/FZY3JW.TTF
+
+working_folder = ../working folder
+source_folder = imgs
+out_folder = products
+text_file = subtitle.txt
+color_file = color_index.txt
+
+bg_color = (50,50,50)
+default_text_color = white
+
+border_width = 15
+name_scale_factor = 0.7
