@@ -63,7 +63,7 @@ if __name__ == "__main__":
             exit(1)
         os.mkdir(out_dir)
     elif len(os.listdir(out_dir)) > 0:
-        answer = input('there are files in the our dir, this operation may overwrite them, continue? [y/n]:\n')
+        answer = input('there are files in the our dir, these files will be skipped, continue? [y/n]:\n')
         if answer.lower() != 'y':
             exit(0)
 
@@ -80,6 +80,12 @@ if __name__ == "__main__":
     page_num = min(len(pages_texts), len(img_list))
 
     for page in range(page_num):
+        file_name = '{:0>4}.png'.format(page)
+        save_name = join(out_dir, file_name)
+        if os.path.exists(save_name):
+            # file already exists
+            print('file {} already exists, skipping...'.format(file_name))
+            continue
         print('making page {}...'.format(page))
 
         names, words = pages_texts[page]
@@ -114,7 +120,6 @@ if __name__ == "__main__":
         new_img.paste(img)
         paragraph.draw(new_img, (border_width, img.height + border_width))
         print('editing done!')
-        file_name = '{:0>4}.png'.format(page)
         print('saving to {}...'.format(join(out_dir, file_name)))
-        new_img.save(join(out_dir, file_name))
+        new_img.save(save_name)
         print('saving done!\n')
