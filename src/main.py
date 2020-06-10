@@ -101,7 +101,7 @@ if __name__ == "__main__":
 
             if name != '':
                 name_color = try_get(name_color_dict, name, default_text_color, quiet=True)
-                name_block = TextBlock(name+':', name_font, name_color)
+                name_block = TextBlock(name+': ', name_font, name_color)
                 paragraph.add_text_block(name_block)
             else:
                 name_color = default_text_color
