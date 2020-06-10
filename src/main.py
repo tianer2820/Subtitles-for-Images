@@ -98,9 +98,13 @@ if __name__ == "__main__":
         for i in range(length):
             name = names[i]
             word = words[i]
-            name_color = try_get(name_color_dict, name, default_text_color, quiet=True)
-            name_block = TextBlock(name+':', name_font, name_color)
-            paragraph.add_text_block(name_block)
+
+            if name != '':
+                name_color = try_get(name_color_dict, name, default_text_color, quiet=True)
+                name_block = TextBlock(name+':', name_font, name_color)
+                paragraph.add_text_block(name_block)
+            else:
+                name_color = default_text_color
 
             word_block = TextBlock(word, word_font, name_color)
             paragraph.add_text_block(word_block)

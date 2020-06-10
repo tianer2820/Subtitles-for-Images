@@ -79,6 +79,8 @@ class Paragraph:
         i = 0
         line_start = [0, 0]
         while True:
+            if len(self._block_list) == 0:
+                break
             block = self._block_list[i_block]
             block: TextBlock
             if len(block.text) == 0:
@@ -172,6 +174,8 @@ class Paragraph:
         i = 0
         line_start = [0, 0]
         while True:
+            if len(self._block_list) == 0:
+                break
             block = self._block_list[i_block]
             block: TextBlock
             if len(block.text) == 0:
