@@ -13,6 +13,8 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
+/working folder/
+
 # Generated files
 .idea/**/contentModel.xml
 
