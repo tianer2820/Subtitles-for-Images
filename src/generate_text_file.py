@@ -86,7 +86,6 @@ if __name__ == "__main__":
         file_name = file_names[page_num]
         out_text += "-----" + file_name + "-----\n"
         page_num += 1
-    print(out_text)
 
     with open(text_file_dir, 'wt', encoding='utf8') as f:
         f.write(out_text)
