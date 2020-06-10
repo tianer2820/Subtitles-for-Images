@@ -1,5 +1,0 @@
-路人乙 = white
-路人甲 = yellow
-路人3 = blue
-一个不知道怎么回事的人 = green
-另一个人 = red
