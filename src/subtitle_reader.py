@@ -16,12 +16,8 @@ def load_subtitle(filename: str) -> List[Tuple[List[str], List[str]]]:
         if line.strip() == '' or line.strip()[0] == '#':
             continue
 
-        if '---' in line:
+        if line.startswith('---') and line.endswith('---'):
             page_split = True
-            for c in line:
-                if not c in '-. !@#$%^&*(){}[];:<>,/?`~' and not c.isdigit():
-                    page_split = False
-                    break
         else:
             page_split = False
 
