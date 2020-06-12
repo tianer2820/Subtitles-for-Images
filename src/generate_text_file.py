@@ -17,6 +17,7 @@ def is_split_page(line: str) -> bool:
 if __name__ == "__main__":
     from settings_loader import load_settings
     from main import try_get
+    import shutil
     join = os.path.join
 
     settings = load_settings(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../settings.txt'))
@@ -41,6 +42,12 @@ if __name__ == "__main__":
         file_names.append(os.path.splitext(source)[0])
 
     text_file_dir = join(current_dir, text_file)
+
+    # backup file
+    text_file_split = os.path.splitext(text_file_dir)
+    print(text_file_split)
+    shutil.copyfile(text_file_dir, text_file_split[0] + '_backup' + text_file_split[1], follow_symlinks=True)
+
     with open(text_file_dir, 'rt', encoding='utf8') as f:
         lines = f.readlines()
 
