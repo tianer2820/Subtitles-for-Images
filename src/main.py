@@ -21,7 +21,7 @@ def try_get(dictionary: dict, key, default_value, quiet=False):
 
 
 if __name__ == "__main__":
-    settings = load_settings('../settings.txt')
+    settings = load_settings(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../settings.txt'))
 
     working_folder = try_get(settings, 'working_folder', '../working folder/')
     source_folder = try_get(settings, 'source_folder', 'imgs')

@@ -7,7 +7,7 @@ import os
 import argparse
 
 
-settings = load_settings('../settings.txt')
+settings = load_settings(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../settings.txt'))
 
 working_folder = try_get(settings, 'working_folder', '../working folder/')
 text_file = try_get(settings, 'text_file', 'subtitle.txt')

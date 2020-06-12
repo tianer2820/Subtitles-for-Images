@@ -19,7 +19,7 @@ if __name__ == "__main__":
     from main import try_get
     join = os.path.join
 
-    settings = load_settings('../settings.txt')
+    settings = load_settings(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../settings.txt'))
 
     working_folder = try_get(settings, 'working_folder', '../working folder/')
     source_folder = try_get(settings, 'source_folder', 'imgs')
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     while True:
         if line_num >= len(lines) or page_num >= len(file_names):
             break
-        line = lines[line_num].strip('\n')
+        line = lines[line_num].strip(' \n')
         if not is_split_page(line):
             out_text += line + '\n'
             line_num += 1
@@ -68,6 +68,7 @@ if __name__ == "__main__":
                 # this line is not found later, image deleted or line added
                 # this line is use less so delete it
                 line_num += 1
+                out_text += '# ' + line + '\n'
                 while line_num < len(lines) and not is_split_page(lines[line_num]):
                     line = lines[line_num].strip(' \n')
                     if line != '':
@@ -78,10 +79,18 @@ if __name__ == "__main__":
                 continue
         else:
             # the subtitle and the file is in synchronize
-            out_text += line + '\n'
             page_num += 1
+            out_text += line + '\n'
             line_num += 1
+            while line_num < len(lines) and not is_split_page(lines[line_num]):
+                line = lines[line_num].strip(' \n')
+                out_text += line + '\n'
+                line_num += 1
             continue
+    while line_num < len(lines):
+        out_text += '# ' + lines[line_num].strip(' \n') + '\n'
+        line_num += 1
+
     while page_num < len(file_names):
         file_name = file_names[page_num]
         out_text += "-----" + file_name + "-----\n"
