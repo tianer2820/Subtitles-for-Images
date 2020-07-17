@@ -23,6 +23,8 @@ def load_subtitle(filename: str) -> List[Tuple[List[str], List[str]]]:
 
         if page_split:
             if len(names) == len(words) == len(pages) == 0:
+                words.append('')
+                names.append('')
                 continue
             if len(names) == 1 and len(words) == 0:
                 # speak aside
